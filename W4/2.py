@@ -4,3 +4,4 @@ d = []
 for i in c :
     if i > b :
         d.append(i)
+print(d)
