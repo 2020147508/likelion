@@ -84,10 +84,10 @@ def load_to_txt(user_list):
 	# 올바르게 생성된 텍스트 파일의 예시는 상단에 이미지로 첨부되어 있습니다.
     if len(user_list) < 3:
         for i in range(len(user_list)):
-            f.write(f"{user_list[i]['id']}, {user_list[i]['password']}, {user_list[i]['email']}\n")
+            f.write(f"{user_list[i]['id']}, {user_list[i]['password']}, {user_list[i]['email']}, {user_list[i]['stnr_date']}\n")
     else:
         for i in range(0, 3):
-            f.write(f"{user_list[i]['id']}, {user_list[i]['password']}, {user_list[i]['email']}\n")
+            f.write(f"{user_list[i]['id']}, {user_list[i]['password']}, {user_list[i]['email']}, {user_list[i]['stnr_date']}\n")
     f.close()
     
 def run():
