@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Diary</title>
+    <style>
+        body{text-align: center}
+        .centertable{
+            margin-left: auto; 
+            margin-right: auto;
+            width: 60%;
+            border-top: 1px solid gray;
+            border-collapse: collapse;
+        }
+        th, td{
+            border-bottom: 1px solid gray; 
+            padding: 10px;
+        }
+        th {
+            background-color: #bbdefb;
+        }
+        td {
+            background-color: #e3f2fd;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>MY DIARY</h1>
+    총 게시물 수 : {{diary_count}}
+    <hr>
+    <div>
+    <table class = "centertable">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Location</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for diary in diaries %}
+            <tr>
+                <td><a href = "{% url 'detail' diary.id %}">{{diary.title}}</a></td>
+                <td><a href = "{% url 'detail' diary.id %}">{{diary.location}}</a></td>
+                <td><a href = "{% url 'detail' diary.id %}">{{diary.pub_date}}</a></td>
+            </tr>
+            {% endfor %}    
+        </tbody>
+    </table>
+    </div>
+    <br>
+    <button><a href="{% url 'new'%}">새 게시물</a></button>
+</body>
+</html>

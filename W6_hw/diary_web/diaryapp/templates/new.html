@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEW</title>
+    <style>
+        body{text-align:center}
+        a{
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Write your Diary</h1>
+
+    <form action="{%url 'create'%}" method="post">
+        {%csrf_token%}  <!--method를 post로 했을 때 반드시 이 내용 같이 보내줘야 함-->
+        제목: <input type="text" name="title">
+        <br>
+        <br>
+        장소: <input type="text" name="location">
+        <br>
+        <br>
+        본문: <textarea name="body" cols="30" rows="10"></textarea>
+        <br>
+        <button type="submit">작성하기</button>
+        <br>
+        <button><a href="{% url 'home'%}">홈으로</a></button>
+    </form>
+</body>
