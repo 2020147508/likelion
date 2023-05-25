@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -7,6 +8,7 @@ class diary(models.Model):
     location = models.CharField(max_length=100)
     pub_date = models.DateTimeField()
     body = models.TextField()
+    writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self): # 메소드를 overriding : class를 만들 때 기본적으로 주어진다
         # 어디선가 이 객체가 호출이 되었을 때 나오는 이름표 같은 것

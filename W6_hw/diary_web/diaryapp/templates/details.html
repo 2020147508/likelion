@@ -1,28 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Details</title>
-    <style>
-        body{text-align:center}
-        a{
-            text-decoration: none;
-            color: black;
-        }
-    </style>
-</head>
-<body>
-    <h1>{{diary.title}}</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+    <h1>MY DIARY</h1>
+    {% if user.is_authenticated %}
+        <div>
+            <p>안녕하세요, {{ user.username }} 님! </p>
+            <button><a href = "{% url 'logout' %}">로그아웃</a></button>
+        </div>
+    <!--로그아웃 상태-->
+    {% else %}
+        <div>
+            <button><a href = "{% url 'login' %}">로그인</a></button>
+            <button><a href = "{% url 'signup' %}">회원가입</a></button>
+        </div>
+    {% endif %}
+</header>
+    <hr>
+    <h3>{{diary.title}}</h3>
     <div>
         장소 : {{diary.location}}
         <br>
         날짜 : {{diary.pub_date}}
+        <br>
+        작성자 : {{diary.writer.username}}
     </div>
     <hr>
     <p>{{diary.body}}</p>
     <br>
+    {% if user.username == diary.writer.username %}
+        <button><a href="{% url 'edit' diary.id%}">수정하기</a></button>
+        <button><a href="{% url 'delete' diary.id%}">삭제하기</a></button>
+    {% endif %}
     <button><a href="{% url 'home'%}">홈으로</a></button>
-</body>
-</html>
+{% endblock %}

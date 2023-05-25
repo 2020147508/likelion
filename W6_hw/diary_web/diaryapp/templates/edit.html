@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+    <h1>Update your Diary</h1>
+</header>
+    <hr>
+    <form action="{%url 'update' diary.id%}" method="post">
+        {%csrf_token%}  <!--method를 post로 했을 때 반드시 이 내용 같이 보내줘야 함-->
+        제목: <input type="text" name="title" value = "{{diary.title}}">
+        <br>
+        <br>
+        장소: <input type="text" name="location" value = "{{diary.location}}">
+        <br>
+        <br>
+        본문: <textarea name="body" cols="30" rows="10">{{diary.body}}</textarea>
+        <br>
+        <button type="submit">수정하기</button>
+        <br>
+    </form>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+    <h1>Login</h1>
+</header>
+<hr>
+    <!--'login' url로 POST 요청-->
+    <form action = "{% url 'login' %}" method = "POST">
+		{% csrf_token %}
+        id: <input type="text" name="username"> <br/>
+        pw: <input type="password" name="password"> <br/>
+        <br>
+        <input type="submit" value="로그인">
+    </form>
+    <button><a href="{% url 'home'%}">홈으로</a></button>
+{% endblock %}
