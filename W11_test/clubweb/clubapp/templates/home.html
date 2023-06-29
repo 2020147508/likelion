@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Num of People</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for club in clubs_ %}
+            <tr>
+                <td><a href = "{% url 'detail' club.id %}">{{club.title}}</td>
+                <td><a href = "{% url 'detail' club.id %}">{{club.description}}</td>
+                <td><a href = "{% url 'detail' club.id %}">{{club.numpeople}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button><a href = "{% url 'create' %}">새 동아리 추가</a></button>
+{% endblock %}

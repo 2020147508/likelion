@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="{%url 'create'%}" method="post">
+        {% csrf_token %}
+        동아리 이름 : <input type = "text" name = "title">
+        <br>
+        <br>
+        동아리 설명 : <textarea name = "description" cols = "10" rows = "10"></textarea>
+        <br>
+        <br>
+        인원 수: <input type="text" name = "numpeople">
+        <br>
+        <button type="submit">작성하기</button>
+        <br>
+    </form>
+{% endblock%}
